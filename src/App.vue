@@ -1,32 +1,73 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div>
+    <v-header @left="showSidebar" v-if="this.$route.meta!='noHead'">
+      <i slot="left-icon" class="icon">&#xe692;</i>
+      <span slot="content">Magic Music</span>
+      <router-link slot="right-icon" to="/user">
+        <i class="icon">&#xe63c;</i>
+      </router-link>
+    </v-header>
+    <v-tab v-if="this.$route.meta!='noHead'"></v-tab>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+    <v-play></v-play>
+    <v-sidebar></v-sidebar>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+import header from "@/components/header";
+import tab from "@/components/tab";
+import play from '@/components/play';
+import sidebar from '@/components/sidebar'
+export default {
+  name: "app",
+  methods:{
+    showSidebar(){
+      this.$store.dispatch('setShowSidebar',true)
     }
+  },
+  components: {
+    "v-header": header,
+    "v-tab": tab,
+    'v-sidebar': sidebar,
+    'v-play': play,
   }
+};
+</script>
+<style lang="scss"  >
+@import "./assets/css/function";
+* { touch-action: none; }
+@font-face {
+  font-family: "icon";
+  /* project id 277165 */
+  src: url("//at.alicdn.com/t/font_kmywdojzhchj8aor.eot");
+  src: url("//at.alicdn.com/t/font_kmywdojzhchj8aor.eot?#iefix")
+      format("embedded-opentype"),
+    url("//at.alicdn.com/t/font_kmywdojzhchj8aor.woff") format("woff"),
+    url("//at.alicdn.com/t/font_kmywdojzhchj8aor.ttf") format("truetype"),
+    url("//at.alicdn.com/t/font_kmywdojzhchj8aor.svg#iconfont") format("svg");
 }
+
+.icon {
+  font-family: "icon" !important;
+  font-size: 18px;
+  font-style: normal;
+  color: #ffffff;
+}
+
+html,
+body {
+  line-height: 1;
+  font-family: PingFang SC, STHeitiSC-Light, Helvetica-Light, arial, sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  background: rgba(8, 5, 58, 0.9);
+  color: #fff;
+}
+
 </style>
