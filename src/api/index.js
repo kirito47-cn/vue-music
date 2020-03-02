@@ -21,4 +21,8 @@ export const MusicSearch = async (params) =>ajax('/search',params)
    * 歌单详情
    */
 export const SongList = async  (id)=>  ajax('/playlist/detail', {id})
+ /**
+   * music歌曲
+   */
+export const MusicUrl = async(id) =>ajax('/song/url',{id})
   

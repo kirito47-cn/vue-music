@@ -1,6 +1,6 @@
 <template>
   <div class="song-list">
-    <div class="list-item" v-for="(item, index) in songLists" :key="index">
+    <div class="list-item" @click="addToPlaying(item)" v-for="(item, index) in songLists" :key="index">
       <div class="info" >
         <div class="song-name">
           {{item.name}}
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-
+import {mapActions,mapGetters} from 'vuex'
 export default {
   components: {
     
@@ -41,6 +41,10 @@ export default {
       const album = song.al && song.al.name
       return `${singer}·${album}`
     },
+    ...mapActions(['selectPlaySong','addPlayList']),
+    addToPlaying(song){
+        this.selectPlaySong(song)
+    }
    }
 //   methods: {
 //     getDesc(song) {

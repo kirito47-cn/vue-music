@@ -32,6 +32,7 @@
 <script>
 import scroll from '@/components/scroll'
 import songList from '@/components/songList'
+
 export default {
   props: {
     bgImage: {
@@ -65,12 +66,11 @@ export default {
     back() {
       this.$router.back()
     },
+  
   },
-//   mounted(){
-//       console.log(this.bgImage)
-//       this.$refs.bgImage.style.backgroundImage = `url(${this.bgImage})`
-//       this.$refs.bgImage.style.zIndex = 20
-//   },
+  mounted(){
+    
+  },
   computed: {
     bgStyle() {
       return `background-image:url(${this.bgImage})`
@@ -84,7 +84,7 @@ export default {
 @import "../assets/css/function.scss";
 .music-list {
   position: fixed;
-  z-index: 100;
+  z-index: 99;
   top: 0;
   left: 0;
   bottom: 0;
@@ -174,6 +174,7 @@ export default {
     background: rgb(8, 5, 58);
     .song-list-wrapper {
       padding: px2rem(30px) px2rem(50px);
+       padding-bottom: px2rem(100px);
     }
   }
 }

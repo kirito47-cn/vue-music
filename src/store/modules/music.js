@@ -4,8 +4,8 @@ import { findIndex } from '../../common/js/util'
 const state = {
   playing: false,
   fullScreen: false,
-  playList: [{name:'haha'},{name:'haha'},{name:'haha'},{name:'haha'}],
-  currentIndex: 0,
+  playList: [],
+  currentIndex: -1,
   favoriteList: [],
   playHistory: [],
 }
@@ -42,7 +42,7 @@ const actions = {
 
     commit(types.SET_PLAYLIST, playlist)
     commit(types.SET_CURRENT_INDEX, currentIndex)
-    commit(types.SET_FULL_SCREEN, true)
+    commit(types.SET_FULL_SCREEN, false)
     commit(types.SET_PLAYING, true)
   },
   // 删除列表音乐

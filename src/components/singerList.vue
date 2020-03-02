@@ -26,6 +26,7 @@
 
 <script>
 import scroll from "@/components/scroll";
+import {mapActions,mapGetters} from 'vuex'
 export default {
 name: 'singer-list',
   created() {

@@ -1,33 +1,25 @@
 <template>
   <div class="player" v-show="playList.length>0">
+   
     <transition name="mini">
-      <div class="mini-player" v-show="!fullScreen" >
+      <div class="mini-player" v-show="!fullScreen">
         <div class="picture">
           <div class="imgWrapper" ref="miniWrapper">
-            <img
-              ref="miniImage"
-              :class="cdCls"
-              width="40"
-              height="40"
-             
-            />
+            <img ref="miniImage" :class="cdCls" width="40" height="40"  v-lazy="(currentSong.al && currentSong.al.picUrl) || (currentSong.artists && currentSong.artists[0].img1v1Url)"/>
           </div>
         </div>
         <div class="text">
           <h2 class="name" v-html="currentSong.name"></h2>
-          <p
-            class="desc"
-           
-          ></p>
+          <p class="desc"></p>
         </div>
-        <div class="control" >
+        <div class="control" @click.stop="togglePlaying">
           <i class="icon icon-mini" v-if="playing">&#xe60a;</i>
           <i class="icon icon-mini" v-else>&#xe606;</i>
         </div>
-        <div class="control" >
+        <div class="control">
           <i class="icon" style="font-size: 24px">&#xe718;</i>
         </div>
-        <div class="control" >
+        <div class="control">
           <i class="icon">&#xe927;</i>
         </div>
         <div class="bottom-progress-bar">
@@ -38,21 +30,135 @@
         </div>
       </div>
     </transition>
+
+
+      <audio
+      loop=true
+      ref="audio"
+      @playing="ready"
+      @pause="paused"
+    ></audio>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions, mapMutations } from "vuex";
+import { playerMixin } from '@/common/js/mixin'
+import { MusicUrl } from '../api/index'
 export default {
   data() {
-    return {};
+    return {
+      songReady: true,
+      currentTime: 0,
+      duration: 0,
+      radius: 32,
+      currentLyric: null,
+      currentLineNum: 0,
+      currentShow: 'cd',
+      playingLyric: '',
+      isPureMusic: false,
+      pureMusicLyric: ''
+      };
   },
-  created(){
-    //   alert(1)
-    console.log(this.current)
-  },    
+  mixins: [playerMixin],
+  created() {
+    // alert(1)
+    console.log(this.current);
+  },
+  methods:{
+    ready() {
+    //   clearTimeout(this.timer)
+      // 监听 playing 这个事件可以确保慢网速或者快速切换歌曲导致的 DOM Exception
+        //  this.songReady = true
+    //   this.canLyricPlay = true
+    //   this.duration = this.$refs.audio.duration
+    //   this.savePlayHistory(this.currentSong)
+    //   // 如果歌曲的播放晚于歌词的出现，播放的时候需要同步歌词
+    //   if (this.currentLyric && !this.isPureMusic) {
+    //     this.currentLyric.seek(this.currentTime * 1000)
+    //   }
+    },
+    paused() {
+    //   this.setPlaying(false)
+    //   if (this.currentLyric) {
+    //     this.currentLyric.stop()
+    //   }
+    },
+    togglePlaying() {
+    //   if (!this.songReady) {
+    //     return
+    //   }
+      this.setPlaying(!this.playing)
+      if (this.currentLyric) {
+        this.currentLyric.togglePlay()
+      }
+    },
+    ...mapActions(['setPlaying','savePlayHistory'])
+  },
   computed: {
-    ...mapGetters(["currentIndex", "fullScreen", "playing", "playList","currentSong"])
+      cdCls() {
+        return this.playing ? 'play' : ''
+        },
+    ...mapGetters([
+      "currentIndex",
+      "fullScreen",
+      "playing",
+      "playList",
+      "currentSong"
+    ])
+  },
+  watch:{
+    async currentSong(newSong, oldSong) {
+      if (!newSong.id || newSong.id === oldSong.id) {
+        return
+      }
+      if (!newSong.url) {
+        const { data, code } = await  MusicUrl(newSong.id)
+        if (data && code === 200) {
+          newSong = { ...newSong, url: data[0].url }
+        //   console.log(newSong)
+        } else {
+          alert('请求音乐出错啦')
+        }
+      }
+    //   this.songReady = false
+    //   this.canLyricPlay = false
+    //   if (this.currentLyric) {
+    //     this.currentLyric.stop()
+    //     // 重置为null
+    //     this.currentLyric = null
+    //     this.currentTime = 0
+    //     this.playingLyric = ''
+    //     this.currentLineNum = 0
+    //   }
+      this.$refs.audio.src = newSong.url
+      this.$refs.audio.play()
+    //   console.log(this.$refs.audio)
+    //   // 若歌曲 5s 未播放，则认为超时，修改状态确保可以切换歌曲。
+    //   clearTimeout(this.timer)
+    //   this.timer = setTimeout(() => {
+    //     this.songReady = true
+    //   }, 5000)
+    //   console.log(newSong)
+    //   this.getLyric(newSong.id)
+    },
+    playing(newPlaying) {
+      if (!this.songReady) {
+        return
+      }
+    //  alert(newPlaying)
+      const audio = this.$refs.audio
+      this.$nextTick(() => {
+        newPlaying ? audio.play() : audio.pause()
+      })
+      if (!newPlaying) {
+        if (this.fullScreen) {
+        //   this.syncWrapperTransform('imageWrapper', 'image')
+        } else {
+        //   this.syncWrapperTransform('miniWrapper', 'miniImage')
+        }
+      }
+    },
   }
 };
 </script>
@@ -62,14 +168,14 @@ export default {
 @import "../assets/css/function.scss";
 
 .player {
-  z-index: 1006;
+  z-index: 2000;
   .normal-player {
     position: fixed;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    z-index: 2000;
+    z-index: 2001;
     background: rgb(8, 5, 58);
     .background {
       position: absolute;
@@ -256,7 +362,7 @@ export default {
         overflow: hidden;
         z-index: -1;
         &::after {
-          content: '';
+          content: "";
           width: 100%;
           height: 100%;
           background: #ea2448;
@@ -345,7 +451,7 @@ export default {
     position: fixed;
     left: 0;
     bottom: px2rem(5px);
-    z-index: 2000;
+    z-index: 2001;
     width: 100%;
     height: px2rem(105px);
     background: #ea2448;
