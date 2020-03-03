@@ -85,7 +85,8 @@ export const playerMixin = {
       // setPlayMode: 'SET_PLAY_MODE',
       setPlaylist: 'SET_PLAYLIST',
       setCurrentIndex: 'SET_CURRENT_INDEX',
-      setPlaying: 'SET_PLAYING'
+      setPlaying: 'SET_PLAYING',
+      setFullScreen:'SET_FULL_SCREEN'
     }),
     ...mapActions([
       'saveFavoriteList',

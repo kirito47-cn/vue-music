@@ -4,11 +4,11 @@
       <div class="head">
         <div class="avatar">
           <img
-            src="https://avatar-static.segmentfault.com/561/990/561990135-57d0e6353f822_huge256"
+            src="https://tvax1.sinaimg.cn/crop.159.0.548.548.180/620cd252ly8fwbktnvc20j20ti0tiqa3.jpg?KID=imgbed,tva&Expires=1583232955&ssig=TxTDfDQZ9w"
             alt
           />
         </div>
-        <div class="name">hzzly</div>
+        <div class="name">kirito</div>
       </div>
       <div class="menu">
         <ul>
