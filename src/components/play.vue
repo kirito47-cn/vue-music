@@ -340,9 +340,7 @@ export default {
       bottom: 0;
       display: flex;
       justify-content: space-around;
-      .icon-box{
-        // flex: 1;
-      }
+     
     }
     //   .title {
     //     width: 70%;
