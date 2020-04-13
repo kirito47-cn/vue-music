@@ -8,7 +8,7 @@
    
   >
     <ul class="suggest-list">
-      <li class="suggest-item" v-for="(item, index) in result" :key="index">
+      <li class="suggest-item" @click="addToPlaying(item)" v-for="(item, index) in result" :key="index">
         <div class="icon">
           <i class="icon">&#xe641;</i>
         </div>
@@ -18,7 +18,7 @@
       </li>
       <loading v-show="hasMore" class="loading-wraper"></loading>
     </ul>
-    <div v-show="!hasMore && !result.length" class="no-result-wrapper">
+    <div v-show="!hasMore&&!result.length" class="no-result-wrapper">
       <span>抱歉，暂无搜索结果</span>
     </div>
   </v-scroll>
@@ -26,13 +26,18 @@
 
 <script type="text/ecmascript-6">
 import scroll from '@/components/scroll'
-// import load from '@/components/load'
+import load from '@/components/load'
 import api from '@/api'
 
+
+import { playerMixin } from '@/common/js/mixin'
+import { mapGetters, mapActions, mapMutations } from "vuex";
+import { MusicUrl } from '../api/index'
 
 
 export default {
   name: 'suggest',
+  mixins:['playerMixin'],
   props: {
     query: {
       type: String,
@@ -45,7 +50,7 @@ export default {
   },
   data() {
     return {
-  
+
       pullup: true,
       beforeScroll: true,
       hasMore: true
@@ -55,6 +60,10 @@ export default {
     refresh() {
       this.$refs.suggest.refresh()
     },
+    ...mapActions(['selectPlaySong','addPlayList']),
+    addToPlaying(song){
+        this.selectPlaySong(song)
+    }
   },
     created(){
         // console.log(this.result+'内部。。。。。')
@@ -64,7 +73,7 @@ export default {
   },
   components: {
     'v-scroll': scroll,
-    
+    'loading':load
   }
 }
 </script>
@@ -77,7 +86,7 @@ export default {
 
   .suggest-list {
     padding: 0 px2rem(60px);
-
+    padding-bottom: px2rem(200px);
     .suggest-item {
       display: flex;
       align-items: center;
@@ -112,8 +121,8 @@ export default {
   .no-result-wrapper {
     position: absolute;
     width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0;
+    transform: translateX(20%);
     span {
       font-size: 14px;
       color: hsla(0,0%,100%,.3);

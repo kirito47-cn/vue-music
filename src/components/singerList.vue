@@ -26,23 +26,21 @@
 
 <script>
 import scroll from "@/components/scroll";
-import {mapActions,mapGetters} from 'vuex'
+// import {mapActions,mapGetters} from 'vuex'
 export default {
 name: 'singer-list',
   created() {
     this.touch = {}
     this.listenScroll = true
-    this.listHeight = []
+    // this.listHeight = []
     this.probeType = 3
     this.click = true
- 
-   
   },
   data() {
     return {
-      scrollY: -1,
-      currentIndex: 0,
-      diff: -1
+      // scrollY: -1,
+      // currentIndex: 0,
+      // diff: -1
     }
   },
   props: {

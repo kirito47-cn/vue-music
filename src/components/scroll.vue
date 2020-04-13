@@ -24,7 +24,7 @@ export default {
       */
     probeType: {
       type: Number,
-      default: 1
+      default: 3
     },
     /**
       * 点击列表是否派发click事件
