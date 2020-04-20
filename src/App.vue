@@ -2,7 +2,7 @@
   <div>
     <v-header @left="showSidebar" v-if="this.$route.meta!='noHead'">
       <i slot="left-icon" class="icon">&#xe692;</i>
-      <span slot="content">Magic Music</span>
+      <span slot="content">Vue Music</span>
       <router-link slot="right-icon" to="/user">
         <i class="icon">&#xe63c;</i>
       </router-link>
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import header from "@/components/header";
+import headers from "@/components/header";
 import tab from "@/components/tab";
 import play from "@/components/play";
 import sidebar from "@/components/sidebar";
@@ -29,7 +29,7 @@ export default {
     }
   },
   components: {
-    "v-header": header,
+    "v-header": headers,
     "v-tab": tab,
     "v-sidebar": sidebar,
     "v-play": play
