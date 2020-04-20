@@ -6,7 +6,7 @@
     <h1 class="title" v-html="title"></h1>
     <div class="bg-image" :style="bgStyle" ref="bgImage">
       <div class="play-wrapper">
-        <div ref="playBtn" v-show="songs.length>0" class="play" >
+        <div ref="playBtn" v-show="songs.length>0" @click="playAll" class="play" >
           <i class="icon">&#xe606;</i>
           <span class="text">播放全部</span>
         </div>
@@ -66,6 +66,9 @@ export default {
     back() {
       this.$router.back()
     },
+    playAll(){
+      this.$store.dispatch('playAllList',this.songs)
+    }
   
   },
   mounted(){

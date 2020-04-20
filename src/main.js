@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import './registerServiceWorker'
-import fastclick, { FastClick } from 'fastclick'
+import fastclick from 'fastclick'
 import router from './router'
 import store from './store/store'
 import ElementUI from 'element-ui';
@@ -28,7 +28,6 @@ Vue.use(VueLazyLoad,{
 })
 
 Vue.config.productionTip = false
-
 
 new Vue({
   router,

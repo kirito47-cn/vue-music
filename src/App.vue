@@ -19,26 +19,28 @@
 <script>
 import header from "@/components/header";
 import tab from "@/components/tab";
-import play from '@/components/play';
-import sidebar from '@/components/sidebar'
+import play from "@/components/play";
+import sidebar from "@/components/sidebar";
 export default {
   name: "app",
-  methods:{
-    showSidebar(){
-      this.$store.dispatch('setShowSidebar',true)
+  methods: {
+    showSidebar() {
+      this.$store.dispatch("setShowSidebar", true);
     }
   },
   components: {
     "v-header": header,
     "v-tab": tab,
-    'v-sidebar': sidebar,
-    'v-play': play,
+    "v-sidebar": sidebar,
+    "v-play": play
   }
 };
 </script>
 <style lang="scss"  >
 @import "./assets/css/function";
-* { touch-action: none; }
+* {
+  touch-action: none;
+}
 @font-face {
   font-family: "icon";
   /* project id 277165 */
@@ -69,5 +71,4 @@ body {
   background: rgba(8, 5, 58, 0.9);
   color: #fff;
 }
-
 </style>
