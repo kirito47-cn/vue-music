@@ -72,7 +72,7 @@ export default {
         }
         let res = await MusicSearch(params)
         this.result = res.result.songs
-        // console.log(this.result)
+     
     }
   },
   mounted() {
@@ -83,7 +83,6 @@ export default {
       "query",
       debounce(newQuery => {
           if(newQuery.trim()){
-                 console.log(newQuery+'发送请求。。。')
                  this._getKeyWordSongs(this.page,newQuery)
           }
        

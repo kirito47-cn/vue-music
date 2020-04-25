@@ -50,8 +50,20 @@ const actions = {
     let playlist = state.playList.slice()
     playlist.splice(index, 1)
     commit(types.SET_PLAYLIST, playlist)
+    if(playlist.length === 0){
+      commit(types.SET_PLAYING,false)
+    }
+    if(state.currentIndex === index){
+      if(index === state.playList.length-1){
+        commit(types.SET_CURRENT_INDEX,0)
+      }else{
+        commit(types.SET_CURRENT_INDEX,index)
+      }
+    }else if(state.currentIndex > index){
+      commit(types.SET_CURRENT_INDEX,--state.currentIndex)
+    }
   },
-  // 情况播放列表
+  // 清空播放列表
   removeAllPlayList({ commit }) {
     commit(types.SET_PLAYLIST, [])
   },

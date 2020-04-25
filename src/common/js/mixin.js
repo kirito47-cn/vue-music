@@ -40,6 +40,7 @@ export const playerMixin = {
       'favoriteList'
     ]),
     favoriteIcon() {
+      // @ts-ignore
       return this.getFavoriteIcon(this.currentSong)
     }
   },
@@ -76,6 +77,7 @@ export const playerMixin = {
       return 'icon-not-favorite'
     },
     isFavorite(song) {
+      // @ts-ignore
       const index = this.favoriteList.findIndex((item) => {
         return item.id === song.id
       })
@@ -110,16 +112,20 @@ export const searchMixin = {
   methods: {
     onQueryChange(query) {
       // 处理带空格的情况
+      // @ts-ignore
       this.query = query.trim()
     },
     blurInput() {
+      // @ts-ignore
       this.$refs.searchBox.blur()
     },
     addQuery(query) {
+      // @ts-ignore
       this.$refs.searchBox.setQuery(query)
     },
     saveSearch(song) {
       this.selectPlaySong(song)
+      // @ts-ignore
       this.saveSearchHistory(this.query)
     },
     ...mapActions([

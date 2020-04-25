@@ -33,7 +33,7 @@ name: 'singer-list',
     this.touch = {}
     this.listenScroll = true
     // this.listHeight = []
-    this.probeType = 3
+    this.probeType = 1
     this.click = true
   },
   data() {

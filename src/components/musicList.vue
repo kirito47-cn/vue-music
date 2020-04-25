@@ -53,8 +53,8 @@ export default {
     }
   },
   created() {
-    this.probeType = 3
-    this.listenScroll = true
+    this.probeType = 1
+    this.listenScroll = false
     this.dropBalls = []
   
   },

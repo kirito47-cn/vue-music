@@ -4,6 +4,7 @@
       <div class="head">
         <div class="avatar">
           <img
+            @click="toCenter"
             src="https://tvax1.sinaimg.cn/crop.159.0.548.548.180/620cd252ly8fwbktnvc20j20ti0tiqa3.jpg?KID=imgbed,tva&Expires=1583232955&ssig=TxTDfDQZ9w"
             alt
           />
@@ -70,9 +71,11 @@ export default {
       this.$store.dispatch('setShowSidebar', false)
     },
     showToast() {
-        // alert(1)
-        // console.log(this.$toast)
       this.$toast('开发中，敬请期待...')
+    },
+    toCenter(){
+      this.$router.push("user")
+      this.$store.dispatch('setShowSidebar', false)
     }
   },
   computed: {
@@ -98,7 +101,7 @@ export default {
     transform: translateZ(0);
     opacity: 0;
     width: px2rem(350px);
-    z-index: 1001;
+    z-index: 999;
     height: 100%;
     overflow: auto;
     transition: all 0.3s ease;
@@ -161,7 +164,7 @@ export default {
     left: 0;
     bottom: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 99;
     background: rgba(0, 0, 0, 0.4);
   }
 }
