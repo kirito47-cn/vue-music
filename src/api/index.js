@@ -25,4 +25,8 @@ export const SongList = async  (id)=>  ajax('/playlist/detail', {id})
    * music歌曲
    */
 export const MusicUrl = async(id) =>ajax('/song/url',{id})
-  
+
+
+// 验证并登录
+export const loginIn = async({phone,password}) => ajax('/login/cellphone',{phone,password})
+export const loginStatus = async() => ajax('/login/status')

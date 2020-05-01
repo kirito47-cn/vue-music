@@ -14,7 +14,7 @@
               class="item"
             >
               <div class="icon">
-                <img width="60" height="60" v-lazy="item.coverImgUrl" />
+                <img width="80" height="80" v-lazy="item.coverImgUrl" />
               </div>
               <div class="text">
                 <h2 class="name" v-html="item.name"></h2>

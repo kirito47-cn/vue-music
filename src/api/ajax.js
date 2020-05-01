@@ -5,7 +5,7 @@ axios.defaults.baseURL = 'http://39.108.182.125:3000'
 axios.interceptors.response.use((res) => {
 	if (res.data.code !== 200) {
     // @ts-ignore
-    vue.$toast('网络异常')
+    vue.$toast(res.data.message)
     // @ts-ignore
     vue.$hideLoading()
 		return Promise.reject(res);
@@ -13,7 +13,8 @@ axios.interceptors.response.use((res) => {
 	return res;
 }, (error) => {
   // @ts-ignore
-  vue.$toast('网络异常')
+  console.log(error)
+  vue.$toast(error)
   // @ts-ignore
   vue.$hideLoading()
 	return Promise.reject(error);

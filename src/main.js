@@ -8,8 +8,9 @@ import ElementUI from 'element-ui';
 import VueLazyLoad from 'vue-lazyload'
 import 'element-ui/lib/theme-chalk/index.css';
 import MintUI from 'mint-ui'
+import Vant from 'vant'
 import 'mint-ui/lib/style.css'
-
+import 'vant/lib/index.css';
 import '../static/css/reset.scss'
 import '../static/css/plugin.scss'
 
@@ -20,6 +21,7 @@ Vue.use(Toast);
 Vue.use(Loading);
 Vue.use(ElementUI)
 Vue.use(MintUI)
+Vue.use(Vant)
 //懒加载的默认图片 
 import def_lazy_img from '../static/img/loading.gif'
 //使用懒加载组件

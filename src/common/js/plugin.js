@@ -22,7 +22,7 @@ Toast.install = function (Vue, options) {
       document.body.appendChild(tpl);
       setTimeout(function () {
         document.body.removeChild(tpl);
-      }, opt.duration)
+      }, +opt.duration)
     }
     ['bottom', 'center', 'top'].forEach(type => {
       Vue.prototype.$toast[type] = (tips) => {

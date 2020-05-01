@@ -5,11 +5,11 @@
         <div class="avatar">
           <img
             @click="toCenter"
-            src="https://tvax1.sinaimg.cn/crop.159.0.548.548.180/620cd252ly8fwbktnvc20j20ti0tiqa3.jpg?KID=imgbed,tva&Expires=1583232955&ssig=TxTDfDQZ9w"
+           :src="avatarUrl"
             alt
           />
         </div>
-        <div class="name">kirito</div>
+        <div class="name">{{nickname}}</div>
       </div>
       <div class="menu">
         <ul>
@@ -49,6 +49,12 @@
               <span>设置</span>
             </router-link>
           </li>
+         <li @click="logout">
+            <router-link to>
+              <i class="icon">&#xe61f;</i>
+              <span>退出登录</span>
+            </router-link>
+          </li>
         </ul>
       </div>
     </div>
@@ -57,14 +63,23 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+
+import {getLocalStorage,clearStorage} from '../common/js/util'
+import {mapGetters} from 'vuex'
 export default {
   name: "sidebar",
   data() {
     return {};
   },
   computed: {
-    ...mapGetters(["showSidebar"])
+    nickname(){
+ 
+      return getLocalStorage("nickname")
+    },
+    avatarUrl(){
+      return getLocalStorage("avatarUrl")
+    },
+    ...mapGetters(['showSidebar'])
   },
   methods:{
     _hidebar() {
@@ -76,12 +91,10 @@ export default {
     toCenter(){
       this.$router.push("user")
       this.$store.dispatch('setShowSidebar', false)
+    },
+    logout(){
+     console.log(`退出登录`)
     }
-  },
-  computed: {
-    ...mapGetters([
-      'showSidebar'
-    ]),
   }
 
   }
