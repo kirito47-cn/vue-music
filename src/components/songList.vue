@@ -7,19 +7,21 @@
         </div>
       <div class="song-desc">{{getDesc(item)}}</div>
       </div>
-      <!-- <div class="operation" v-show="operate" @click="_showOperation(index)">
+      <div class="operation" v-show="operate" @click.stop="_showOperation(index)">
         <i class="icon">&#xe605;</i>
-      </div> -->
-      <!-- <animation-menu @add="onAdd" :song="item" :index="index"></animation-menu> -->
+      </div>
+      <animation-menu @add="onAdd" :song="item" :index="index"></animation-menu>
     </div>
   </div>
 </template>
 
 <script>
+import Vue from "vue"
 import {mapActions,mapGetters} from 'vuex'
+import animationMenu from '@/components/animationMenu'
 export default {
   components: {
-    
+     animationMenu,
   },
   props: {
     songLists: {
@@ -44,36 +46,35 @@ export default {
     ...mapActions(['selectPlaySong','addPlayList']),
     addToPlaying(song){
         this.selectPlaySong(song)
+    },
+  
+    getDesc(song) {
+      const singer = song.ar && song.ar[0].name
+      const album = song.al && song.al.name
+      return `${singer}·${album}`
+    },
+    _play(song) {
+      this.$store.dispatch('selectPlaySong', song)
+    },
+    _showOperation(index) {
+      for (let i = 0; i < this.songLists.length; i++) {
+        if (i !== index) {
+          this.songLists[i].menuShow = false
+        }
+      }
+      this.songLists[index].menuShow = !this.songLists[index].menuShow
+    },
+    onAdd(el) {
+      this.$emit('add', el)
     }
-   }
-//   methods: {
-//     getDesc(song) {
-//       const singer = song.ar && song.ar[0].name
-//       const album = song.al && song.al.name
-//       return `${singer}·${album}`
-//     },
-//     _play(song) {
-//       this.$store.dispatch('selectPlaySong', song)
-//     },
-//     _showOperation(index) {
-//       for (let i = 0; i < this.songLists.length; i++) {
-//         if (i !== index) {
-//           this.songLists[i].menuShow = false
-//         }
-//       }
-//       this.songLists[index].menuShow = !this.songLists[index].menuShow
-//     },
-//     onAdd(el) {
-//       this.$emit('add', el)
-//     }
-//   },
-//   watch: {
-//     songLists() {
-//       for (let item of this.songLists) {
-//         Vue.set(item, 'menuShow', false)
-//       }
-//     }
-//   }
+  },
+  watch: {
+    songLists() {
+      for (let item of this.songLists) {
+        Vue.set(item, 'menuShow', false)
+      }
+    }
+  }
 }
 </script>
 

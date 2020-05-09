@@ -23,7 +23,7 @@
       ref="list"
     >
       <div class="song-list-wrapper">
-        <v-song-list :song-lists="songs" ></v-song-list>
+        <v-song-list :songLists="songs" ></v-song-list>
       </div>
     </v-scroll>
   </div>

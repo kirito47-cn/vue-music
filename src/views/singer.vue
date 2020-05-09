@@ -30,7 +30,6 @@ export default {
     async _getSinger() {
       let singers = await getSingerList();
       this.singers = this._normalizeSinger(singers.artists)
-      
         // this.singers = singers.artists
     },
  selectSinger(singer) {

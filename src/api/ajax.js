@@ -14,7 +14,7 @@ axios.interceptors.response.use((res) => {
 }, (error) => {
   // @ts-ignore
   console.log(error)
-  vue.$toast(error)
+  vue.$toast("用户名或密码错误")
   // @ts-ignore
   vue.$hideLoading()
 	return Promise.reject(error);

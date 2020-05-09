@@ -54,7 +54,7 @@ const actions = {
       commit(types.SET_PLAYING,false)
     }
     if(state.currentIndex === index){
-      if(index === state.playList.length-1){
+      if(index === state.playList.length){
         commit(types.SET_CURRENT_INDEX,0)
       }else{
         commit(types.SET_CURRENT_INDEX,index)
