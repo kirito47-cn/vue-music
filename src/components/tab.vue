@@ -32,13 +32,15 @@ export default {
     flex: 1;
     text-align: center;
     .tab-link {
-      padding-bottom: 5px;
+      padding-bottom: .3125rem;
+      font-size: 1rem;
       color: hsla(0, 0%, 100%, 0.5);
     }
-    &.active {
+    &.router-link-active {
+      
       .tab-link {
         color: #ea2448;
-        border-bottom: 2px solid #ea2448;
+        border-bottom: .125rem solid #ea2448;
       }
     }
   }

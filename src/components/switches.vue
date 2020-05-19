@@ -36,15 +36,15 @@ export default {
 .switches {
   display: flex;
   align-items: center;
-  width: 240px;
+  width: 15rem;
   margin: 0 auto;
   border: 1px solid #2f3054;
-  border-radius: 5px;
+  border-radius: .3125rem;
   .switch-item {
     flex: 1;
-    padding: 8px;
+    padding: .5rem;
     text-align: center;
-    font-size: 14px;
+    font-size: .875rem;
     color: hsla(0,0%,100%,.3);
     &.active {
       background: #2f3054;

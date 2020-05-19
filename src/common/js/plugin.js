@@ -8,6 +8,7 @@ Toast.install = function (Vue, options) {
     opt[property] = options[property]; // 使用 options 的配置
   }
   Vue.prototype.$toast = (tips, type) => {
+    console.log(tips,"tips")
       if (type) {
         opt.defaultType = type; // 如果有传type，位置则设为该type
       }

@@ -14,7 +14,7 @@
               class="item"
             >
               <div class="icon">
-                <img width="80" height="80" v-lazy="item.coverImgUrl" />
+                <img  v-lazy="item.coverImgUrl" />
               </div>
               <div class="text">
                 <h2 class="name" v-html="item.name"></h2>
@@ -58,6 +58,7 @@ export default {
   methods: {
     async _getBanner() {
       let result = await getBanner();
+      
       this.bannerSrc = result.banners;
     },
     async _getDiscList(params) {
@@ -93,7 +94,7 @@ export default {
         height: px2rem(120px);
         line-height: px2rem(130px);
         text-align: center;
-        font-size: 14px;
+        font-size: .875rem;
         color: #ea2448;
       }
       .item {
@@ -101,9 +102,13 @@ export default {
         box-sizing: border-box;
         align-items: center;
         padding: 0 px2rem(40px) px2rem(40px) px2rem(40px);
+        img{
+          width: 5rem;
+          height: 5rem;
+        }
         .icon {
           flex: 0 0 px2rem(120px);
-          width: px2rem(120px);
+          width: 7.5rem;
           padding-right: px2rem(40px);
         }
         .text {
@@ -113,7 +118,7 @@ export default {
           flex: 1;
           line-height: px2rem(40px);
           overflow: hidden;
-          font-size: 14px;
+          font-size: .875rem;
           .name {
             margin-bottom: px2rem(20px);
             color: #fff;

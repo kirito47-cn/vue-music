@@ -101,7 +101,7 @@ export default {
     .icon {
       display: block;
       padding: 0 px2rem(30px);
-      font-size: 22px;
+      font-size: 1.375rem;
     }
   }
   .title {
@@ -114,7 +114,7 @@ export default {
     overflow: hidden;
     white-space: nowrap;
     line-height: px2rem(100px);
-    font-size: 18px;
+    font-size: 1.125rem;
     color: #fff;
   }
   .bg-image {
@@ -143,14 +143,14 @@ export default {
         .icon {
           display: inline-block;
           vertical-align: middle;
-          margin-right: 6px;
-          font-size: 16px;
+          margin-right: .375rem;
+          font-size: 1rem;
           color: #ea2448;
         }
         .text {
           display: inline-block;
           vertical-align: middle;
-          font-size: 12px;
+          font-size: .75rem;
         }
       }
     }

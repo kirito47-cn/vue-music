@@ -96,13 +96,13 @@ export default {
     .icon {
       flex: 0 0 px2rem(60px);
       width: px2rem(60px);
-      font-size: 14px;
+      font-size: .875rem;
       color: hsla(0,0%,100%,.3);
     }
 
     .name {
       flex: 1;
-      font-size: 14px;
+      font-size: .875rem;
       color: hsla(0,0%,100%,.3);
       overflow: hidden;
 
@@ -124,7 +124,7 @@ export default {
     top: 0;
     transform: translateX(20%);
     span {
-      font-size: 14px;
+      font-size: .875rem;
       color: hsla(0,0%,100%,.3);
     }
   }

@@ -137,7 +137,7 @@ export default {
         margin: 0 px2rem(30px);
         color: hsla(0, 0%, 100%, 0.6);
         overflow: hidden;
-        font-size: 12px;
+        font-size: .75rem;
         .song {
           line-height: px2rem(50px);
           text-overflow: ellipsis;

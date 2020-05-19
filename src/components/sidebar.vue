@@ -73,11 +73,10 @@ export default {
   },
   computed: {
     nickname(){
- 
-      return getLocalStorage("nickname")
+      return this.$store.getters.nickname || localStorage.getItem("nickname")
     },
     avatarUrl(){
-      return getLocalStorage("avatarUrl")
+      return this.$store.getters.avatarUrl || localStorage.getItem("avatarUrl")
     },
     ...mapGetters(['showSidebar'])
   },
@@ -86,6 +85,7 @@ export default {
       this.$store.dispatch('setShowSidebar', false)
     },
     showToast() {
+      // alert(1)
       this.$toast('开发中，敬请期待...')
     },
     toCenter(){
@@ -93,7 +93,9 @@ export default {
       this.$store.dispatch('setShowSidebar', false)
     },
     logout(){
-     console.log(`退出登录`)
+     window.localStorage.clear()
+     this.$router.push("/")
+     this.$store.dispatch('setShowSidebar', false)
     }
   }
 

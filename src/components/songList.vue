@@ -85,14 +85,14 @@ export default {
   .list-item {
     position: relative;
     height: px2rem(120px);
-    font-size: 14px;
+    font-size: .875rem;
     display: flex;
     align-items: center;
     cursor: pointer;
     color: #fff;
     .info {
       flex: 1;
-      line-height: 20px;
+      line-height: 1.25rem;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -100,7 +100,7 @@ export default {
         color: #fff;
       }
       .song-desc {
-        margin-top: 4px;
+        margin-top: .25rem;
         color: hsla(0,0%,100%,.5);
       }
     }

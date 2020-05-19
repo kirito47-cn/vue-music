@@ -77,7 +77,7 @@
           <div class="operators-box">
             <div class="operators">
               <div class="icon-box i-left" @click="changeMode">
-                <i class="icon" style="font-size: 20px">&#xe819;</i>
+                <i class="icon" style="font-size: 1.5rem">&#xe819;</i>
               </div>
               <div class="icon-box i-left" :class="disableCls">
                 <i @click="prev" class="icon">&#xe61e;</i>
@@ -92,7 +92,7 @@
                 <i @click="next" class="icon">&#xe604;</i>
               </div>
               <div class="icon-box i-right" @click="showPlaylist">
-                <i class="icon" style="font-size: 28px">&#xe927;</i>
+                <i class="icon" style="font-size: 1.5rem">&#xe927;</i>
                 <!-- <i @click="toggleFavorite(currentSong)" class="icon" :class="favoriteIcon"></i> -->
               </div>
             </div>
@@ -107,8 +107,7 @@
             <img
               ref="miniImage"
               :class="cdCls"
-              width="40"
-              height="40"
+              
               v-lazy="(currentSong.al && currentSong.al.picUrl) || (currentSong.artists && currentSong.artists[0].img1v1Url)"
             >
           </div>
@@ -124,7 +123,7 @@
           </v-progress-circle> -->
         </div>
         <div class="control" @click.stop="next">
-          <i class="icon" style="font-size: 24px">&#xe718;</i>
+          <i class="icon" style="font-size: 1.5rem">&#xe718;</i>
         </div>
         <div class="control" @click.stop="showPlaylist">
           <i class="icon">&#xe927;</i>
@@ -586,7 +585,7 @@ export default {
     }
     .top {
       position: relative;
-      margin-bottom: 25px;
+      margin-bottom: 1.5625rem;
       .back {
         position: absolute;
         top: 0;
@@ -597,7 +596,7 @@ export default {
           height: px2rem(100px);
           line-height: px2rem(100px);
           padding: 0 px2rem(30px);
-          font-size: 22px;
+          font-size: 1.375rem;
         }
       }
       .title {
@@ -608,13 +607,13 @@ export default {
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
-        font-size: 18px;
+        font-size: 1.125rem;
         color: #fff;
       }
       .subtitle {
         line-height: px2rem(40px);
         text-align: center;
-        font-size: 14px;
+        font-size: .875rem;
         color: #fff;
       }
     }
@@ -647,8 +646,10 @@ export default {
               position: absolute;
               left: 0;
               top: 0;
-              width: 100%;
-              height: 100%;
+              width: 20.125rem;
+              height: 20.125rem;
+              /* width: 100%;
+              height: 100%; */
               box-sizing: border-box;
               border-radius: 50%;
               border: 10px solid rgba(255, 255, 255, 0.1);
@@ -660,13 +661,13 @@ export default {
         }
         .playing-lyric-wrapper {
           width: 80%;
-          margin: 30px auto 0 auto;
+          margin: 1.875rem auto 0 auto;
           overflow: hidden;
           text-align: center;
           .playing-lyric {
             height: px2rem(40px);
             line-height: px2rem(40px);
-            font-size: 14px;
+            font-size: .875rem;
             color: hsla(0, 0%, 100%, 0.5);
           }
         }
@@ -685,7 +686,7 @@ export default {
           .text {
             line-height: px2rem(64px);
             color: hsla(0, 0%, 100%, 0.5);
-            font-size: 14px;
+            font-size: .875rem;
             &.current {
               color: #fff;
             }
@@ -694,7 +695,7 @@ export default {
             padding-top: 50%;
             line-height: px2rem(64px);
             color: hsla(0, 0%, 100%, 0.5);
-            font-size: 14px;
+            font-size: .875rem;
           }
         }
       }
@@ -726,12 +727,12 @@ export default {
         justify-content: space-between;
         align-items: center;
         width: 80%;
-        margin: 0px auto;
-        padding: 10px 0;
+        margin: 0rem auto;
+        padding: .625rem 0;
         .time {
           color: #fff;
-          font-size: 12px;
-          flex: 0 0 30px;
+          font-size: .75rem;
+          flex: 0 0 1.875rem;
           line-height: px2rem(60px);
           width: px2rem(60px);
           &.time-l {
@@ -790,7 +791,7 @@ export default {
             color: #222;
           }
           i {
-            font-size: 26px;
+            font-size: 1.625rem;
           }
         }
         .i-left {
@@ -808,7 +809,7 @@ export default {
             background: #fff;
             .icon {
               margin-top: px2rem(4px);
-              font-size: 30px;
+              font-size: 1.875rem;
               display: inline-block;
               color: #4436b1;
               &.icon-pause {
@@ -870,6 +871,8 @@ export default {
         width: 100%;
         img {
           border-radius: 50%;
+          width: 2.5rem;
+          height: 2.5rem;
           &.play {
             animation: rotate 10s linear infinite;
           }
@@ -888,18 +891,18 @@ export default {
       line-height: px2rem(40px);
       overflow: hidden;
       .name {
-        margin-bottom: 2px;
+        margin-bottom: .125rem;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
-        font-size: 14px;
+        font-size: .875rem;
         color: #fff;
       }
       .desc {
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
-        font-size: 12px;
+        font-size: .75rem;
         color: hsla(0, 0%, 100%, 0.3);
       }
     }
@@ -909,7 +912,7 @@ export default {
       text-align: center;
       padding: 0 px2rem(20px);
       .icon {
-        font-size: 30px;
+        font-size: 1.875rem;
         color: #fff;
       }
     }

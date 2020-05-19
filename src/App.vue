@@ -54,7 +54,7 @@ export default {
 
 .icon {
   font-family: "icon" !important;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-style: normal;
   color: #ffffff;
 }

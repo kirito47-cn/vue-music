@@ -2,7 +2,7 @@
   <div class="login">
     <div class="mask"></div>
     <div class="logo">
-      <p>MagicMusic</p>
+      <p>VueMusic</p>
       <p>Listen to what you want to hear</p>
     </div>
     <div class="form-g">
@@ -36,6 +36,7 @@
 
 <script>
 import { loginIn } from '@/api'
+import { setLocalStorage } from '@/common/js/util'
 export default {
   name: 'login',
   data() {
@@ -61,6 +62,13 @@ export default {
       //   }
       // })
       loginIn(data).then(res=>{if(res.code === 200){
+        console.log(res)
+        setLocalStorage("loginStatus",true)
+        setLocalStorage("nickname",res.profile.nickname)
+        setLocalStorage("avatarUrl",res.profile.avatarUrl)
+        this.$store.dispatch("setUserinfo",{nickname:res.profile.nickname,avatarUrl:res.profile.avatarUrl})
+        this.$store.dispatch("setToken",res.token)
+
         this.$router.push('/')
       }})
     }
@@ -177,7 +185,7 @@ export default {
 
 @media screen and(min-width: 769px) {
   .mask {
-    width: 460px;
+    width: 28.75rem;
     margin: 0 auto;
   }
   .form-g {

@@ -134,7 +134,7 @@ export default {
     .icon {
       display: block;
       padding: 0 px2rem(30px);
-      font-size: 22px;
+      font-size: 1.375rem;
     }
   }
   .switches-wrapper {
@@ -146,21 +146,21 @@ export default {
     padding: px2rem(10px) 0;
     margin: 0 auto;
     text-align: center;
-    border: 1px solid #ea2448;
+    border: .0625rem solid #ea2448;
     color: #ea2448;
     border-radius: px2rem(200px);
     font-size: 0;
     .icon {
       display: inline-block;
       vertical-align: middle;
-      margin-right: 6px;
-      font-size: 16px;
+      margin-right: .375rem;
+      font-size: 1rem;
       color: #ea2448;
     }
     .text {
       display: inline-block;
       vertical-align: middle;
-      font-size: 12px;
+      font-size: .75rem;
     }
   }
   .list-wrapper {
@@ -182,7 +182,7 @@ export default {
     top: 50%;
     transform: translateY(-50%);
     text-align: center;
-    font-size: 14px;
+    font-size: .875rem;
     color: hsla(0,0%,100%,.3);
   }
 }

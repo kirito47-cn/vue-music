@@ -42,6 +42,7 @@ export default {
       } else {
         this.$emit('add', e.target)
         this.$store.dispatch('addPlayList', this.song)
+        this.$toast('添加成功')
       }
       Vue.set(this.song, 'menuShow', false)
     },

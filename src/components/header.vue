@@ -57,7 +57,7 @@ export default {
   .header-cont {
     flex: 1;
     text-align: center;
-    font-size: 18px;
+    font-size: 1.125rem;
     color: #fff;
     font-weight: 500;
     overflow: hidden;

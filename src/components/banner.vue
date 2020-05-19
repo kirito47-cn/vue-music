@@ -1,6 +1,6 @@
 <template>
   <div class="slide-wrapper">
-        <mt-swipe :auto="0" class="slide-content">
+        <mt-swipe :auto="3000" class="slide-content">
         <mt-swipe-item v-for="(img,index) in imgList" :key="index">
           <img :src="img.imageUrl" class="image" @click="jumpTo()" />
         </mt-swipe-item>
